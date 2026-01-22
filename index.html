@@ -1,162 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine’s Day ❤️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Valentine’s Day 💖</title>
 
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #ffe6ee;
-    text-align: center;
-    padding: 20px;
-  }
-  h1, h2 {
-    color: #d6336c;
-  }
-  button {
-    font-size: 18px;
-    padding: 14px 28px;
-    margin: 10px;
-    border: none;
-    border-radius: 10px;
-    background: #ff5c8a;
-    color: white;
-    cursor: pointer;
-  }
-  .hidden {
-  display: none;
-}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffe6ee;
+      text-align: center;
+      padding: 30px;
+      overflow-x: hidden;
+    }
 
-.gallery {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
-  margin-top: 20px;
-}
+    h1, h2 {
+      color: #d6336c;
+    }
 
-.gallery img {
-  width: 100%;
-  border-radius: 15px;
-}
+    button {
+      padding: 12px 22px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      background: #ff4d6d;
+      color: white;
+    }
 
-  button:hover {
-    background: #ff3366;
-  }
-  .hidden {
-    display: none;
-  }
-  .section {
-    margin: 40px 0;
-  }
-</style>
+    button:hover {
+      background: #e63956;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    img {
+      width: 90%;
+      max-width: 300px;
+      border-radius: 15px;
+      margin: 10px 0;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
-
-
-
 
 <body>
 
-<h1>Hi Joel ❤️</h1>
-<p>You are <b>1 year and 5 months</b> of my favorite person 🥰</p>
-<p>⚠️ Warning: excessive love ahead</p>
+  <!-- SOUND -->
+  <audio id="loveSound">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3" type="audio/mpeg">
+  </audio>
 
-<div class="section">
-  <h2>Will you be my Valentine? 💕</h2>
-  <button onclick="alert('clicked')">Yes 💖</button>
-
-  <button id="noBtn">No 😅</button>
-</div>
-
-<div class="section hidden" id="reasons">
-  <h2>Why I love you 💗</h2>
-  <p>You make my life happier just by being in it.</p>
-  <p>You make me laugh when I don’t feel like smiling.</p>
-  <p>I still choose you every single day.</p>
-</div>
-
-<div class="section">
-  <button onclick="showReasons()">Click for a surprise 💌</button>
-</div>
-<div class="section">
-  <h2>Our memories 📸</h2>
-
-  <button onclick="toggleGallery()">Open our memories 💕</button>
-
-  <div id="gallery" class="gallery hidden">
-    <img src="3cac9ccd-bd88-4934-b1eb-6813e96163f0.jpeg" alt="Us 💖">
-    <img src="e452dd26-2534-4693-874c-2cfddec21f07.jpeg" alt="Favorite moment ♥️">
-    <img src="IMG_6068.jpeg" alt="Always you 😚">
+  <!-- STEP 1 -->
+  <div id="step1">
+    <h1>Hi Joel ❤️</h1>
+    <h2>Will you be my Valentine? 💕</h2>
+    <button onclick="yesClicked()">Yes 💖</button>
+    <button id="noBtn">No 😅</button>
   </div>
-</div>
 
+  <!-- STEP 2 -->
+  <div id="step2" class="hidden">
+    <h2>Why I love you 💗</h2>
+    <p>You make my life happier just by being in it.</p>
+    <p>You make me laugh when I don’t feel like smiling.</p>
+    <p>I still choose you every single day.</p>
+    <button onclick="showMemories()">Next ➡️</button>
+  </div>
 
-<div class="section">
-  <button onclick="finalSurprise()">Final surprise 😏</button>
-</div>
+  <!-- STEP 3 -->
+  <div id="step3" class="hidden">
+    <h2>Our memories 📸</h2>
+    <!-- Replace image names with your actual files -->
+    <img src="IMG_6068.jpeg" alt="Memory 1">
+    <img src="IMG_6069.jpeg" alt="Memory 2">
+    <h2>I love you forever 💘</h2>
+  </div>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- CONFETTI -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-<script>
   <script>
-  function toggleGallery() {
-    document.getElementById("gallery").classList.remove("hidden");
-  }
+    function yesClicked() {
+      document.getElementById("loveSound").play();
 
-  function celebrate() {
-    confetti({
-      particleCount: 150,
-      spread: 90,
-      origin: { y: 0.6 }
-    });
-    alert("YAY!! Happy Valentine’s Day ❤️🥰");
-  }
+      confetti({
+        particleCount: 200,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
 
-  function showReasons() {
-    document.getElementById("reasons").classList.remove("hidden");
-  }
+      for (let i = 0; i < 20; i++) {
+        createHeart();
+      }
 
-  function finalSurprise() {
-    confetti({
-      particleCount: 200,
-      spread: 100,
-      startVelocity: 35
-    });
-    alert("Congratulations Joel 🎉\nYou are officially stuck with me forever 😌❤️");
-  }
+      document.getElementById("step1").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+    }
 
-  const noBtn = document.getElementById("noBtn");
-  noBtn.addEventListener("mouseover", () => {
-    noBtn.style.position = "absolute";
-    noBtn.style.left = Math.random() * 80 + "%";
-    noBtn.style.top = Math.random() * 80 + "%";
-  });
-</script>
-<script>
-  function celebrate() {
-    alert("YAY!! 💖 Happy Valentine’s Day!");
-  }
+    function showMemories() {
+      document.getElementById("step2").classList.add("hidden");
+      document.getElementById("step3").classList.remove("hidden");
+    }
 
-  function showReasons() {
-    document.getElementById("reasons").classList.toggle("hidden");
-  }
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
 
-  function toggleGallery() {
-    document.getElementById("gallery").classList.toggle("hidden");
-  }
+    // Moving "No" button
+    const noBtn = document.getElementById("noBtn");
+    if (noBtn) {
+      noBtn.addEventListener("mouseover", moveNoBtn);
+      noBtn.addEventListener("touchstart", moveNoBtn);
+    }
 
-  // Optional fun behavior for the No button 😈
-  const noBtn = document.getElementById("noBtn");
-  if (noBtn) {
-    noBtn.addEventListener("mouseover", () => {
+    function moveNoBtn() {
       noBtn.style.position = "absolute";
-      noBtn.style.left = Math.random() * 80 + "%";
-      noBtn.style.top = Math.random() * 80 + "%";
-    });
-  }
-</script>
-</body>
+      noBtn.style.left = Math.random() * 70 + "%";
+      noBtn.style.top = Math.random() * 70 + "%";
+    }
+  </script>
 
 </body>
 </html>
