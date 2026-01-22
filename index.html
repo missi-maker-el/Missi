@@ -132,6 +132,30 @@
     noBtn.style.top = Math.random() * 80 + "%";
   });
 </script>
+<script>
+  function celebrate() {
+    alert("YAY!! 💖 Happy Valentine’s Day!");
+  }
+
+  function showReasons() {
+    document.getElementById("reasons").classList.toggle("hidden");
+  }
+
+  function toggleGallery() {
+    document.getElementById("gallery").classList.toggle("hidden");
+  }
+
+  // Optional fun behavior for the No button 😈
+  const noBtn = document.getElementById("noBtn");
+  if (noBtn) {
+    noBtn.addEventListener("mouseover", () => {
+      noBtn.style.position = "absolute";
+      noBtn.style.left = Math.random() * 80 + "%";
+      noBtn.style.top = Math.random() * 80 + "%";
+    });
+  }
+</script>
+</body>
 
 </body>
 </html>
